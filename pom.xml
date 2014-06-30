@@ -6,7 +6,7 @@
 
 	<groupId>io.inventit.dev</groupId>
 	<artifactId>mqtt-websocket-java</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<name>MQTT over WebScoket for Java with Paho and Jetty</name>
 	<distributionManagement>
 		<repository>
@@ -174,4 +174,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<url>https://github.com/inventit/mqtt-websocket-java</url>
 </project>

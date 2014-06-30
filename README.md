@@ -24,7 +24,7 @@ Note that Paho Java library is included in this project as the binary isn't uplo
 
     $ mvn clean package
 
-Then you'll get `mqtt-websocket-java-0.0.1.jar` under the `target` directory.
+Then you'll get `mqtt-websocket-java-1.0.0.jar` under the `target` directory.
 
 
 # How to use
