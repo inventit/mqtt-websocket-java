@@ -8,6 +8,22 @@
 	<artifactId>mqtt-websocket-java</artifactId>
 	<version>1.0.0</version>
 	<name>MQTT over WebScoket for Java with Paho and Jetty</name>
+	<url>https://github.com/inventit/mqtt-websocket-java</url>
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>https://github.com/inventit/mqtt-websocket-java/blob/master/README.md#source-code-license</url>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/inventit/mqtt-websocket-java</url>
+		<connection>scm:git:git://github.com/inventit/mqtt-websocket-java.git</connection>
+		<developerConnection>scm:git:git@github.com:inventit/mqtt-websocket-java.git</developerConnection>
+	</scm>
+	<issueManagement>
+		<url>https://github.com/inventit/mqtt-websocket-java/issues</url>
+		<system>GitHub Issues</system>
+	</issueManagement>
 	<distributionManagement>
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
@@ -17,6 +33,9 @@
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<repositories>
 		<repository>
@@ -120,10 +139,6 @@
 		</plugins>
 	</build>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.jetty.websocket</groupId>
@@ -135,18 +150,6 @@
 			<groupId>org.eclipse.paho</groupId>
 			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
 			<version>1.0.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>17.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.9</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -174,5 +177,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<url>https://github.com/inventit/mqtt-websocket-java</url>
 </project>

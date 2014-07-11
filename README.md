@@ -16,6 +16,17 @@ This library offers MQTT client functionality over WebSocket transport with [Pah
 
 JDK/JRE 1.7+ is required as Jetty no longer supports JDK/JRE 1.6.
 
+# Dependencies
+
+The following libraries are requried as well.
+
+| GroupId                   | ArtifactId     | Version       |
+|---------------------------|----------------|---------------|
+|org.eclipse.jetty          |jetty-io        |9.2.1.v20140609|
+|org.eclipse.jetty          |jetty-util      |9.2.1.v20140609|
+|org.eclipse.jetty.websocket|websocket-api   |9.2.1.v20140609|
+|org.eclipse.jetty.websocket|websocket-common|9.2.1.v20140609|
+
 # How to build
 
 Install maven then run the following command on the project root directory.
