@@ -45,7 +45,7 @@ public class WebSocketNetworkModule extends WebSocketAdapter implements
 	private final String subProtocol;
 
 	/**
-	 * A stream for outgonig data
+	 * A stream for outgoing data
 	 */
 	private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream() {
 		@Override
