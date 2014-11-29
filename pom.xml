@@ -145,13 +145,12 @@
 			<groupId>org.eclipse.jetty.websocket</groupId>
 			<artifactId>websocket-client</artifactId>
 			<version>9.2.5.v20141112</version>
-			<scope>compile</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.paho</groupId>
 			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
 			<version>1.0.0</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
