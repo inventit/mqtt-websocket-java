@@ -34,6 +34,8 @@
 		</repository>
 	</distributionManagement>
 	<properties>
+		<jdk.classifier></jdk.classifier>
+		<target.jdk>1.7</target.jdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -53,8 +55,8 @@
 				<version>3.1</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.6</source>
+					<target>${target.jdk}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -122,6 +124,7 @@
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
+					<classifier>${jdk.classifier}</classifier>
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 						<manifest>
@@ -175,4 +178,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>jdk16</id>
+			<activation>
+				<jdk>1.6</jdk>
+			</activation>
+			<properties>
+				<jdk.classifier>jdk16</jdk.classifier>
+				<target.jdk>1.6</target.jdk>
+			</properties>
+		</profile>
+	</profiles>
 </project>
