@@ -21,8 +21,7 @@ public class MqttWebSocketAsyncClient extends MqttAsyncClient {
 
 	private static final String CLASS_NAME = MqttWebSocketAsyncClient.class
 			.getName();
-	private static final Logger log = LoggerFactory.getLogger(
-			LoggerFactory.MQTT_CLIENT_MSG_CAT, CLASS_NAME);
+	private final Logger log;
 
 	private final String serverURI;
 
@@ -67,13 +66,25 @@ public class MqttWebSocketAsyncClient extends MqttAsyncClient {
 	}
 
 	public MqttWebSocketAsyncClient(String serverURI, String clientId,
+			MqttClientPersistence persistence, String loggerName)
+			throws MqttException {
+		this(serverURI, clientId, persistence, new TimerPingSender(),
+				loggerName);
+	}
+
+	public MqttWebSocketAsyncClient(String serverURI, String clientId,
 			MqttClientPersistence persistence) throws MqttException {
-		this(serverURI, clientId, persistence, new TimerPingSender());
+		this(serverURI, clientId, persistence, null);
+	}
+
+	public MqttWebSocketAsyncClient(String serverURI, String clientId,
+			String loggerName) throws MqttException {
+		this(serverURI, clientId, new MqttDefaultFilePersistence(), loggerName);
 	}
 
 	public MqttWebSocketAsyncClient(String serverURI, String clientId)
 			throws MqttException {
-		this(serverURI, clientId, new MqttDefaultFilePersistence());
+		this(serverURI, clientId, (String) null);
 	}
 
 	/**
@@ -140,9 +151,25 @@ public class MqttWebSocketAsyncClient extends MqttAsyncClient {
 			// http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/cs01/mqtt-v3.1.1-cs01.html#_Toc388534418
 			subProtocol = "mqtt";
 		}
+		return newWebSocketNetworkModule(URI.create(address), subProtocol,
+				options);
+	}
 
+	/**
+	 * A factory method for instantiating a {@link NetworkModule} with websocket
+	 * support. Subclasses is able to extend this method in order to create an
+	 * arbitrary {@link NetworkModule} class instance.
+	 * 
+	 * @param uri
+	 * @param subProtocol
+	 *            Either `mqtt` for MQTT v3 or `mqttv3.1` for MQTT v3.1
+	 * @param options
+	 * @return
+	 */
+	protected NetworkModule newWebSocketNetworkModule(URI uri,
+			String subProtocol, MqttConnectOptions options) {
 		final WebSocketNetworkModule netModule = new WebSocketNetworkModule(
-				URI.create(address), subProtocol, getClientId());
+				uri, subProtocol, getClientId());
 		netModule.setConnectTimeout(options.getConnectionTimeout());
 		return netModule;
 	}
