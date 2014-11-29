@@ -6,7 +6,7 @@
 
 	<groupId>io.inventit.dev</groupId>
 	<artifactId>mqtt-websocket-java</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>MQTT over WebScoket for Java with Paho and Jetty</name>
 	<url>https://github.com/inventit/mqtt-websocket-java</url>
 	<licenses>
@@ -34,6 +34,8 @@
 		</repository>
 	</distributionManagement>
 	<properties>
+		<jdk.classifier></jdk.classifier>
+		<target.jdk>1.7</target.jdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -53,8 +55,8 @@
 				<version>3.1</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.6</source>
+					<target>${target.jdk}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -107,7 +109,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
@@ -121,9 +122,9 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
+					<classifier>${jdk.classifier}</classifier>
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 						<manifest>
@@ -143,14 +144,13 @@
 		<dependency>
 			<groupId>org.eclipse.jetty.websocket</groupId>
 			<artifactId>websocket-client</artifactId>
-			<version>9.2.1.v20140609</version>
-			<scope>compile</scope>
+			<version>9.2.5.v20141112</version>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.paho</groupId>
 			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
 			<version>1.0.0</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -177,4 +177,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>jdk16</id>
+			<activation>
+				<jdk>1.6</jdk>
+			</activation>
+			<properties>
+				<jdk.classifier>jdk16</jdk.classifier>
+				<target.jdk>1.6</target.jdk>
+			</properties>
+		</profile>
+	</profiles>
 </project>
