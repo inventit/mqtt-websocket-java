@@ -27,6 +27,28 @@ The following libraries are requried as well.
 |org.eclipse.jetty.websocket|websocket-api   |9.2.1.v20140609|
 |org.eclipse.jetty.websocket|websocket-common|9.2.1.v20140609|
 
+## maven pom.xml settings
+
+Adds the following elements to your pom.xml if you're using maven.
+
+```
+  <dependency>
+    <groupId>io.inventit.dev</groupId>
+    <artifactId>mqtt-websocket-java</artifactId>
+    <version>1.0.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.eclipse.jetty.websocket</groupId>
+    <artifactId>websocket-client</artifactId>
+    <version>9.2.5.v20141112</version>
+  </dependency>
+  <dependency>
+    <groupId>org.eclipse.paho</groupId>
+    <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+```
+
 # How to build
 
 Install maven then run the following command on the project root directory.
@@ -35,13 +57,19 @@ Note that Paho Java library is included in this project as the binary isn't uplo
 
     $ mvn clean package
 
-Then you'll get `mqtt-websocket-java-1.0.0.jar` under the `target` directory.
-
+Then you'll get `mqtt-websocket-java-<version>.jar` under the `target` directory.
 
 # How to use
-Here is a sample code to use `MqttWebSocketAsyncClient`.
+You can use this library as the same manner as Paho's library but use `MqttWebSocketAsyncClient` instead of Paho's classes such as `MqttClient` and `MqttAsyncClient`.
 
-Do NOT use `MqttClient` as it always uses Paho's default async client `MqttAsyncClient`.
+The `MqttWebSocketAsyncClient` supports the following URI schimes:
+
+1. `ws://<host>:<port>`  ... for a plain WebSocket
+1. `wss://<host>:<port>` ... for a WebSocket with SSL/TLS
+1. `tcp://<host>:<port>` ... for a plain TCP MQTT socket
+1. `ssl://<host>:<port>` ... for a secure SSL/TLS MQTT socket
+
+Here is sample code to use `MqttWebSocketAsyncClient`.
 
       // Plain MQTT
       // final String uriString = "tcp://your-mqtt-broker:1883";
@@ -90,3 +118,16 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Change History
+
+[1.0.1 : November 29, 2014](https://github.com/inventit/mqtt-websocket-java/releases/tag/1.0.1)
+
+* Upgrades Jetty 9 library
+* Adds a new factory method for WebSocketNetworkModule instance
+* Adds new constructors with a new paramter for specifying the logger name to MqttWebSocketAsyncClient
+* Releases a JDK1.6 class version (50) jar as well in order for Android app to include this library (**Note that Jetty 9 itself doesn't support Android and JDK 1.6**)
+
+[1.0.0 : July 30, 2014](https://github.com/inventit/mqtt-websocket-java/releases/tag/1.0.0)
+
+* Initial
