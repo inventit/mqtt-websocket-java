@@ -25,7 +25,7 @@ import org.eclipse.paho.client.mqttv3.logging.Logger;
 import org.eclipse.paho.client.mqttv3.logging.LoggerFactory;
 
 /**
- * A network module for connecting over WebScoket with Jetty.
+ * A network module for connecting over WebScoket with Jetty 9.
  */
 public class WebSocketNetworkModule extends WebSocketAdapter implements
 		NetworkModule {
