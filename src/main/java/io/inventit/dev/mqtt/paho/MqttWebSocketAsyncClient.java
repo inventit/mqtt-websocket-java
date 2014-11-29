@@ -33,7 +33,7 @@ public class MqttWebSocketAsyncClient extends MqttAsyncClient {
 	 * @param original
 	 * @return
 	 */
-	static String createDummyURI(String original) {
+	protected static String createDummyURI(String original) {
 		if (!original.startsWith("ws:") && !original.startsWith("wss:")) {
 			return original;
 		}
@@ -42,18 +42,22 @@ public class MqttWebSocketAsyncClient extends MqttAsyncClient {
 				+ (uri.getPort() > 0 ? uri.getPort() : 80);
 	}
 
-	static boolean isDummyURI(String uri) {
+	protected static boolean isDummyURI(String uri) {
 		return uri.startsWith("tcp://DUMMY-");
 	}
 
 	public MqttWebSocketAsyncClient(String serverURI, String clientId,
-			MqttClientPersistence persistence, MqttPingSender pingSender)
-			throws MqttException {
+			MqttClientPersistence persistence, MqttPingSender pingSender,
+			String loggerName) throws MqttException {
 
 		super(createDummyURI(serverURI), clientId, persistence, pingSender);
 		this.serverURI = serverURI;
 
 		final String methodName = "MqttWebSocketAsyncClient";
+
+		this.log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT,
+				(loggerName == null || loggerName.length() == 0) ? CLASS_NAME
+						: loggerName);
 
 		// @TRACE 101=<init> ClientID={0} ServerURI={1} PersistenceType={2}
 		if (log.isLoggable(Logger.FINE)) {
