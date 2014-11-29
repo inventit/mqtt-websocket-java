@@ -10,7 +10,7 @@ This library offers MQTT client functionality over WebSocket transport with [Pah
 # Supported Paho MQTT library version and Jetty WebSocket Client version
 
 1. [Paho org.eclipse.paho.mqtt.java 1.0.0](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.java.git/tag/?id=v1.0.0)
-1. [Jetty websocket-client 9.2.1.v20140609](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-websocket-client-api.html)
+1. [Jetty websocket-client 9.2.5.v20141112](http://www.eclipse.org/jetty/documentation/9.2.3.v20140905/jetty-websocket-client-api.html)
 
 # Supported JDK/JRE Version
 
@@ -22,10 +22,10 @@ The following libraries are requried as well.
 
 | GroupId                   | ArtifactId     | Version       |
 |---------------------------|----------------|---------------|
-|org.eclipse.jetty          |jetty-io        |9.2.1.v20140609|
-|org.eclipse.jetty          |jetty-util      |9.2.1.v20140609|
-|org.eclipse.jetty.websocket|websocket-api   |9.2.1.v20140609|
-|org.eclipse.jetty.websocket|websocket-common|9.2.1.v20140609|
+|org.eclipse.jetty          |jetty-io        |9.2.5.v20141112|
+|org.eclipse.jetty          |jetty-util      |9.2.5.v20141112|
+|org.eclipse.jetty.websocket|websocket-api   |9.2.5.v20141112|
+|org.eclipse.jetty.websocket|websocket-common|9.2.5.v20141112|
 
 ## maven pom.xml settings
 
