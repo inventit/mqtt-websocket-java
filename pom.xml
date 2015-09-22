@@ -145,7 +145,6 @@
 			<groupId>org.eclipse.jetty.websocket</groupId>
 			<artifactId>websocket-client</artifactId>
 			<version>9.2.5.v20141112</version>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.paho</groupId>
