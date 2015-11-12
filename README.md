@@ -16,6 +16,12 @@ This library offers MQTT client functionality over WebSocket transport with [Pah
 
 JDK/JRE 1.7+ is required as Jetty no longer supports JDK/JRE 1.6.
 
+However, [`mqtt-websocket-jdk16-android`](https://github.com/inventit/mqtt-websocket-jdk16-android) library works on JDK/JRE 1.6 environment.
+
+# HTTP Proxy Unsupported
+
+Jetty9 WebSocket client doesn't support HTTP proxy. Therefore, this library won't work with HTTP proxy.
+
 # Dependencies
 
 The following libraries are requried as well.
