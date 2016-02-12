@@ -24,29 +24,12 @@
 		<url>https://github.com/inventit/mqtt-websocket-java/issues</url>
 		<system>GitHub Issues</system>
 	</issueManagement>
-	<distributionManagement>
-		<repository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>LocalRepository</id>
-			<name>Local Repository</name>
-			<url>file://${basedir}/target</url>
-			<layout>default</layout>
-		</repository>
-	</distributionManagement>
+
 	<properties>
 		<jdk.classifier></jdk.classifier>
 		<target.jdk>1.7</target.jdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>ProjectLocalLibrariesRepository</id>
-			<name>Project Local Libraries Repository</name>
-			<url>file://${basedir}/src/main/libs</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
 
 	<build>
 		<plugins>
@@ -144,12 +127,12 @@
 		<dependency>
 			<groupId>org.eclipse.jetty.websocket</groupId>
 			<artifactId>websocket-client</artifactId>
-			<version>9.2.5.v20141112</version>
+			<version>9.2.14.v20151106</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.paho</groupId>
 			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

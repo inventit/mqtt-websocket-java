@@ -9,8 +9,8 @@ This library offers MQTT client functionality over WebSocket transport with [Pah
 
 # Supported Paho MQTT library version and Jetty WebSocket Client version
 
-1. [Paho org.eclipse.paho.mqtt.java 1.0.0](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.java.git/tag/?id=v1.0.0)
-1. [Jetty websocket-client 9.2.5.v20141112](http://www.eclipse.org/jetty/documentation/9.2.3.v20140905/jetty-websocket-client-api.html)
+1. [Paho org.eclipse.paho.mqtt.java 1.0.2](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.java.git/tag/?id=v1.0.2)
+1. [Jetty websocket-client 9.2.14.v20151106](http://www.eclipse.org/jetty/documentation/current/jetty-websocket-client-api.html)
 
 # Supported JDK/JRE Version
 
@@ -26,12 +26,12 @@ Jetty9 WebSocket client doesn't support HTTP proxy. Therefore, this library won'
 
 The following libraries are requried as well.
 
-| GroupId                   | ArtifactId     | Version       |
-|---------------------------|----------------|---------------|
-|org.eclipse.jetty          |jetty-io        |9.2.5.v20141112|
-|org.eclipse.jetty          |jetty-util      |9.2.5.v20141112|
-|org.eclipse.jetty.websocket|websocket-api   |9.2.5.v20141112|
-|org.eclipse.jetty.websocket|websocket-common|9.2.5.v20141112|
+| GroupId                   | ArtifactId     | Version        |
+|---------------------------|----------------|----------------|
+|org.eclipse.jetty          |jetty-io        |9.2.14.v20151106|
+|org.eclipse.jetty          |jetty-util      |9.2.14.v20151106|
+|org.eclipse.jetty.websocket|websocket-api   |9.2.14.v20151106|
+|org.eclipse.jetty.websocket|websocket-common|9.2.14.v20151106|
 
 ## maven pom.xml settings
 
@@ -46,20 +46,18 @@ Adds the following elements to your pom.xml if you're using maven.
   <dependency>
     <groupId>org.eclipse.jetty.websocket</groupId>
     <artifactId>websocket-client</artifactId>
-    <version>9.2.5.v20141112</version>
+    <version>9.2.14.v20151106</version>
   </dependency>
   <dependency>
     <groupId>org.eclipse.paho</groupId>
     <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
   </dependency>
 ```
 
 # How to build
 
 Install maven then run the following command on the project root directory.
-
-Note that Paho Java library is included in this project as the binary isn't uploaded to any maven repository yet.
 
     $ mvn clean package
 
