@@ -55,13 +55,19 @@ Adds the following elements to your pom.xml if you're using maven.
   </dependency>
 ```
 
-# How to build
+# How to install
 
-Install maven then run the following command on the project root directory.
+## Downloading the jar file
 
-    $ mvn clean package
+    curl -O -L https://github.com/inventit/mqtt-websocket-java/releases/download/1.0.1/mqtt-websocket-java-1.0.1.jar
 
-Then you'll get `mqtt-websocket-java-<version>.jar` under the `target` directory.
+Or you can create a jar file by yourself (see below).
+
+## Installing into your mvn local repository
+
+    mvn install:install-file -Dfile=mqtt-websocket-java-1.0.1.jar \
+        -DgroupId=io.inventit.dev -DartifactId=mqtt-websocket-java \
+        -Dversion=1.0.1 -Dpackaging=jar
 
 # How to use
 You can use this library as the same manner as Paho's library but use `MqttWebSocketAsyncClient` instead of Paho's classes such as `MqttClient` and `MqttAsyncClient`.
@@ -110,6 +116,13 @@ Here is sample code to use `MqttWebSocketAsyncClient`.
       	}
       });
 
+# How to build
+
+Install maven then run the following command on the project root directory.
+
+    $ mvn clean package
+
+Then you'll get `mqtt-websocket-java-<version>.jar` under the `target` directory.
 
 # Source Code License
 
