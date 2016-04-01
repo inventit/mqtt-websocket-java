@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="io.inventit.dev.mqtt-websocket-java"
+      version="1.0.1">
+    <name>mqtt-websocket-java</name>
+    <description>MQTT over WebScoket for Java with Paho and Jetty</description>
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines> 
+    
+    <!-- ios -->
+    <!-- TBD -->
+        
+    <!-- android -->
+    <platform name="android">
+    
+        <source-file src="src/main/java/io/inventit/dev/mqtt/paho/MqttWebSocketAsyncClient.java" target-dir="src/io/inventit/dev/mqtt/paho/" /> 
+        <source-file src="src/main/java/io/inventit/dev/mqtt/paho/PahoConsoleLogger.java" target-dir="src/io/inventit/dev/mqtt/paho/" /> 
+        <source-file src="src/main/java/io/inventit/dev/mqtt/paho/WebSocketNetworkModule.java" target-dir="src/io/inventit/dev/mqtt/paho/" /> 
+
+    </platform>          
+</plugin>
