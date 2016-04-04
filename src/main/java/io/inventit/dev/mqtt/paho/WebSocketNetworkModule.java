@@ -14,6 +14,9 @@ import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.concurrent.Future;
 
+import javax.net.ssl.SSLEngine;
+import javax.net.ssl.SSLParameters;
+
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
@@ -119,7 +122,25 @@ public class WebSocketNetworkModule extends WebSocketAdapter implements
 	 * @return
 	 */
 	protected SslContextFactory createSslContextFactory() {
-		return new SslContextFactory();
+		return new SslContextFactory(true){
+	        @Override
+	        public void customize(SSLEngine sslEngine) {
+	        	 SSLParameters sslParams = sslEngine.getSSLParameters();
+	            //sslParams.setEndpointIdentificationAlgorithm(_endpointIdentificationAlgorithm);
+	            sslEngine.setSSLParameters(sslParams);
+
+	            if (getWantClientAuth())
+	                sslEngine.setWantClientAuth(getWantClientAuth());
+	            if (getNeedClientAuth())
+	                sslEngine.setNeedClientAuth(getNeedClientAuth());
+
+	            sslEngine.setEnabledCipherSuites(selectCipherSuites(
+	                    sslEngine.getEnabledCipherSuites(),
+	                    sslEngine.getSupportedCipherSuites()));
+
+	            sslEngine.setEnabledProtocols(selectProtocols(sslEngine.getEnabledProtocols(),sslEngine.getSupportedProtocols()));
+	        }
+	    };
 	}
 
 	/**
